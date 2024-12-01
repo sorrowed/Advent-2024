@@ -1,0 +1,29 @@
+{
+    "build": {
+        "dockerfile": "./Dockerfile",
+    },
+    "remoteUser": "ubuntu",
+    "customizations": {
+        "settings": {
+            "terminal.integrated.defaultProfile.linux": "zsh",
+            "terminal.integrated.profiles.linux": {
+                "zsh": {
+                    "path": "/bin/zsh"
+                }
+            }
+        },
+        "vscode": {
+            "extensions": [
+                "Wokwi.wokwi-vscode"
+            ]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/rust:1": "latest",
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
+    "postCreateCommand": "postCreate.sh"
+}
