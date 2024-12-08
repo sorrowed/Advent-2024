@@ -17,11 +17,11 @@ fn parse_into_sorted_vectors(pairs: &Vec<String>) -> (Vec<i64>, Vec<i64>) {
     (f, s)
 }
 
-fn sum_of_differences(f: &Vec<i64>, s: &Vec<i64>) -> i64 {
+fn sum_of_differences(f: &[i64], s: &[i64]) -> i64 {
     f.iter().zip(s.iter()).map(|(f, s)| (f - s).abs()).sum()
 }
 
-fn count_score(f: &Vec<i64>, s: &Vec<i64>) -> i64 {
+fn count_score(f: &[i64], s: &[i64]) -> i64 {
     let matches = f
         .iter()
         .map(|n| (n, s.iter().filter(|&&s| s == *n).count()));

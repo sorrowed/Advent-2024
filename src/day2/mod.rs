@@ -37,7 +37,7 @@ impl Safe for Report {
     fn is_safe(&self) -> bool {
         let adjacent: bool = self.levels.windows(2).all(|window| {
             let distance = (window[1] - window[0]).abs();
-            distance >= 1 && distance <= 3
+            (1..=3).contains(&distance)
         });
 
         let increasing: bool = self.levels.windows(2).all(|window| window[1] > window[0]);
@@ -51,7 +51,7 @@ impl Safe for Report {
         self.is_safe() || {
             (0..self.levels.len())
                 .map(|i| [&self.levels[..i], &self.levels[i + 1..]].concat())
-                .map(|l| Report::new(l))
+                .map(Report::new)
                 .any(|r| r.is_safe())
         }
     }
